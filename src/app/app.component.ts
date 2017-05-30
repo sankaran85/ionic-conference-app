@@ -86,8 +86,9 @@ export class ConferenceApp {
     (console as any).timeStamp('platform ready called');
     
     // load the conference data
-    confData.load();
-    (console as any).timeStamp('data loaded');
+    confData.load().then(() => {
+      (console as any).timeStamp('data loaded');
+    });
 
     // decide which menu items should be hidden by current login status stored in local storage
     this.userData.hasLoggedIn().then((hasLoggedIn) => {
