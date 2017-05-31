@@ -62,7 +62,7 @@ export class ConferenceApp {
   constructor(
     public events: Events,
     public userData: UserData,
-    public menu: MenuController,
+    //public menu: MenuController,
     public platform: Platform,
     public confData: ConferenceData,
     public storage: Storage,
@@ -86,17 +86,17 @@ export class ConferenceApp {
     (console as any).timeStamp('platform ready called');
 
     // load the conference data
-    confData.load()
+    //confData.load()
     // .then(() => {
     //   (console as any).timeStamp('data loaded');
     // });
 
     // decide which menu items should be hidden by current login status stored in local storage
-    this.userData.hasLoggedIn().then((hasLoggedIn) => {
+    /*this.userData.hasLoggedIn().then((hasLoggedIn) => {
       this.enableMenu(hasLoggedIn === true);
     });
     this.enableMenu(true);
-
+*/
     this.listenToLoginEvents();
   }
 
@@ -147,8 +147,8 @@ export class ConferenceApp {
   }
 
   enableMenu(loggedIn: boolean) {
-    this.menu.enable(loggedIn, 'loggedInMenu');
-    this.menu.enable(!loggedIn, 'loggedOutMenu');
+    //this.menu.enable(loggedIn, 'loggedInMenu');
+    //this.menu.enable(!loggedIn, 'loggedOutMenu');
   }
 
   platformReady() {

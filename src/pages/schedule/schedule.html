@@ -34,7 +34,7 @@
     <ion-refresher-content></ion-refresher-content>
   </ion-refresher>
 
-  <ion-list #scheduleList [hidden]="shownSessions === 0">
+  <!--<ion-list #scheduleList [hidden]="shownSessions === 0">
 
     <ion-item-group *ngFor="let group of groups" [hidden]="group.hide">
 
@@ -68,11 +68,13 @@
 
     </ion-item-group>
 
-  </ion-list>
+  </ion-list> -->
 
-  <ion-list-header [hidden]="shownSessions > 0">
+  <!--<ion-list-header [hidden]="shownSessions > 0">
       No Sessions Found
-  </ion-list-header>
+  </ion-list-header> -->
+
+  <h2>No Session Found</h2>
 
   <ion-fab bottom right #fab>
     <button ion-fab><ion-icon name="share"></ion-icon></button>
