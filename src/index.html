@@ -12,6 +12,16 @@
     performance.mark('ionic:download-init-start');
   </script>
 
+  <!-- Zone optimizations from https://github.com/angular/zone.js/blob/b5e33fda35d5d26382f415cc649a170c9215d31e/example/profiling.html -->
+  <script>
+    __Zone_disable_Error = true;
+    __Zone_disable_on_property = true;
+    __Zone_disable_geolocation = true;
+    __Zone_disable_toString = true;
+    __Zone_disable_blocking = true;
+    __Zone_disable_PromiseRejectionEvent = true;
+  </script>
+
 
   <title>Ionic Conference App</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
