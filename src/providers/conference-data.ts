@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Injectable, NgZone } from '@angular/core';
 
 import { Http } from '@angular/http';
 
@@ -13,7 +13,7 @@ import 'rxjs/add/observable/of';
 export class ConferenceData {
   data: any;
 
-  constructor(public http: Http, public user: UserData) { }
+  constructor(public http: Http, public user: UserData, private ngZone: NgZone) { }
 
   load(): any {
     if (this.data) {
@@ -25,6 +25,14 @@ export class ConferenceData {
   }
 
   processData(data: any) {
+    (performance as any).mark('ionic:json-processing-start');
+
+    this.ngZone.runOutsideAngular(() => {
+      requestAnimationFrame(() => {
+        (performance as any).measure('ionic:json-processing', 'ionic:json-processing-start');
+      });
+    });
+
     // just some good 'ol JS fun with objects and arrays
     // build up the data by linking speakers to sessions
     this.data = data.json();
