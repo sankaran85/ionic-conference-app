@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Injectable, NgZone } from '@angular/core';
 
 import { Events } from 'ionic-angular';
 import { Storage } from '@ionic/storage';
@@ -12,7 +12,8 @@ export class UserData {
 
   constructor(
     public events: Events,
-    public storage: Storage
+    public storage: Storage,
+    private ngZone: NgZone
   ) {}
 
   hasFavorite(sessionName: string): boolean {
@@ -59,7 +60,17 @@ export class UserData {
   };
 
   hasLoggedIn(): Promise<boolean> {
+
     return this.storage.get(this.HAS_LOGGED_IN).then((value) => {
+
+      (performance as any).mark('ionic:hasLoggedIn-callback-start');
+
+      this.ngZone.runOutsideAngular(() => {
+        requestAnimationFrame(() => {
+          (performance as any).measure('ionic:hasLoggedIn-callback', 'ionic:hasLoggedIn-callback-start');
+        });
+      });
+
       return value === true;
     });
   };

@@ -27,9 +27,23 @@ export class ConferenceData {
   processData(data: any) {
     (performance as any).mark('ionic:json-processing-start');
 
+
     this.ngZone.runOutsideAngular(() => {
+
       requestAnimationFrame(() => {
         (performance as any).measure('ionic:json-processing', 'ionic:json-processing-start');
+
+
+        (performance as any).mark('ionic:json-render-start');
+
+
+        requestAnimationFrame(() => {
+          (performance as any).measure('ionic:json-render', 'ionic:json-render-start');
+
+          (performance as any).measure('ionic:first-render', 'ionic:first-render-start');
+        });
+
+
       });
     });
 
