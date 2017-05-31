@@ -39,6 +39,7 @@
     "typescript": "2.3.3"
   },
   "config": {
-    "ionic_uglifyjs": "./config/uglifyjs.config.js"
+    "ionic_uglifyjs": "./config/uglifyjs.config.js",
+    "ionic_copy": "./config/copy.config.js"
   }
 }
