@@ -6,8 +6,4 @@ module.exports = {
     src: ['{{ROOT}}/hackz/zone-only-polyfill.js'],
     dest: '{{BUILD}}'
   },
-  uglifyHax: {
-    src: ['{{ROOT}}/hackz/uglifyjs.js'],
-    dest: `{{ROOT}}/node_modules/@ionic/app-scripts/dist/uglifyjs.js`
-  }
 }
