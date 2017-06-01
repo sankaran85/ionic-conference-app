@@ -1,0 +1,15 @@
+--- node_modules/@ionic/app-scripts/dist/uglifyjs.js	2017-06-01 17:02:15.000000000 -0500
++++ node_modules/@ionic/app-scripts/dist/uglifyjs.js	2017-06-01 16:03:14.000000000 -0500
+@@ -104,7 +104,11 @@
+                     if (result.error) {
+                         throw new errors_1.BuildError("Uglify failed: " + result.error.message);
+                     }
++                    const modifiedCode = 'performance.measure("ionic:main.js-compile", "ionic:main.js-compile-start");' +
++                   'performance.mark("ionic:main.js-eval-start");\n\n\n' +
++                   result.code + ';\n\n\n\n' +
++                   'performance.measure("ionic:main.js-eval", "ionic:main.js-eval-start");';
++                    return [2 /*return*/, Promise.all([helpers_1.writeFileAsync(destFilePath, modifiedCode), helpers_1.writeFileAsync(destMapPath, result.map)])];
+-                    return [2 /*return*/, Promise.all([helpers_1.writeFileAsync(destFilePath, result.code), helpers_1.writeFileAsync(destMapPath, result.map)])];
+             }
+         });
+     });

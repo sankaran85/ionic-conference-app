@@ -8,7 +8,7 @@
     "url": "https://github.com/ionic-team/ionic-conference-app.git"
   },
   "scripts": {
-    "postinstall": "echo \"haxxxxxxxxxxxxx\" && cp ./hackz/uglifyjs.js ./node_modules/@ionic/app-scripts/dist/uglifyjs.js",
+    "postinstall": "./hackz/apply.sh",
     "build": "ionic-app-scripts build",
     "clean": "ionic-app-scripts clean",
     "ionic:build": "ionic-app-scripts build",

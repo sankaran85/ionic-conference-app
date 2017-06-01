@@ -1,0 +1,9 @@
+--- node_modules/@ionic/storage/es2015/storage.js	2017-06-01 16:52:43.000000000 -0500
++++ node_modules/@ionic/storage/es2015/storage.js	2017-06-01 16:52:56.000000000 -0500
+@@ -1,5 +1,5 @@
+ import { OpaqueToken } from '@angular/core';
+-import LocalForage from 'localforage';
++import LocalForage from 'localforage/dist/localforage.nopromises';
+ import CordovaSQLiteDriver from 'localforage-cordovasqlitedriver';
+ /**
+  * Storage is an easy way to store key/value pairs and JSON objects.
