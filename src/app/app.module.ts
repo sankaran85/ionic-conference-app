@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpModule } from '@angular/http';
-import { NgModule, ErrorHandler } from '@angular/core';
+import { NgModule, ErrorHandler, NgZone } from '@angular/core';
 
 import { IonicApp, IonicModule, IonicErrorHandler } from 'ionic-angular';
 
@@ -96,4 +96,14 @@ import { UserData } from '../providers/user-data';
     SplashScreen
   ]
 })
-export class AppModule { }
+
+export class AppModule {
+  constructor(ngZone: NgZone) {
+    let cdCounter = 0;
+    ngZone.onUnstable.subscribe(() => (performance as any).mark(`ionic:cd-${++cdCounter}-start`));
+    ngZone.onStable.subscribe(() => {
+      if (cdCounter == 0) return;
+      (performance as any).measure(`ionic:cd-${cdCounter}`, `ionic:cd-${cdCounter}-start`)
+    });
+  }
+}
