@@ -28,7 +28,12 @@ export class ConferenceData {
     if (this.data) {
       return Observable.of(this.data);
     } else {
-      return Observable.fromPromise(fetch('assets/data/data.json')).map(this.processData, this);
+      return Observable.create((observer: any) => {
+        fetch('assets/data/data.json').then(response => response.json()).then(data => {
+          observer.next({json: function() {return data}});
+          observer.complete();
+        });
+      }).map(this.processData, this);
     }
 
     // if (this.data) {
