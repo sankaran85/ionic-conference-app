@@ -7,6 +7,7 @@ import { UserData } from './user-data';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/observable/of';
+import 'rxjs/add/observable/fromPromise';
 
 
 @Injectable()
@@ -24,9 +25,11 @@ export class ConferenceData {
     // };
     // xhr.send();
 
-    fetch('assets/data/data.json').then(data => {
-      this.processData(data);
-    });
+    if (this.data) {
+      return Observable.of(this.data);
+    } else {
+      return Observable.fromPromise(fetch('assets/data/data.json')).map(this.processData, this);
+    }
 
     // if (this.data) {
     //   return Observable.of(this.data);

@@ -46,8 +46,42 @@ export class SchedulePage {
   ) {}
 
   ionViewDidLoad() {
+    Promise.resolve().then(() => {
+      (<any>console).timeStamp('ionViewDidLoad 1');
+    });
+    Promise.resolve().then(() => {
+      (<any>console).timeStamp('ionViewDidLoad 2');
+    });
+    Promise.resolve().then(() => {
+      (<any>console).timeStamp('ionViewDidLoad 3');
+    });
+
     this.app.setTitle('Schedule');
     this.updateSchedule();
+  }
+
+  ionViewWillEnter() {
+    Promise.resolve().then(() => {
+      (<any>console).timeStamp('ionViewWillEnter 1');
+    });
+    Promise.resolve().then(() => {
+      (<any>console).timeStamp('ionViewWillEnter 2');
+    });
+    Promise.resolve().then(() => {
+      (<any>console).timeStamp('ionViewWillEnter 3');
+    });
+  }
+
+  ionViewDidEnter() {
+    Promise.resolve().then(() => {
+      (<any>console).timeStamp('ionViewDidEnter 1');
+    });
+    Promise.resolve().then(() => {
+      (<any>console).timeStamp('ionViewDidEnter 2');
+    });
+    Promise.resolve().then(() => {
+      (<any>console).timeStamp('ionViewDidEnter 3');
+    });
   }
 
   updateSchedule() {
