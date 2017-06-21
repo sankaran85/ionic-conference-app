@@ -47,7 +47,7 @@ export class SpeakerListPage {
       buttons: [
         {
           text: 'Copy Link',
-          handler: ($event: Event) => {
+          handler: () => {
             console.log('Copy link clicked on https://twitter.com/' + speaker.twitter);
             if ((window as any)['cordova'] && (window as any)['cordova'].plugins.clipboard) {
               (window as any)['cordova'].plugins.clipboard.copy('https://twitter.com/' + speaker.twitter);
