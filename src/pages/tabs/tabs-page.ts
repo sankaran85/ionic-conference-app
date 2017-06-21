@@ -5,7 +5,7 @@ import { IonicPage, NavParams } from 'ionic-angular';
 
 @IonicPage()
 @Component({
-  templateUrl: 'tabs.html'
+  templateUrl: 'tabs-page.html'
 })
 export class TabsPage {
   // set the root pages for each tab
