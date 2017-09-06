@@ -9,8 +9,8 @@ var smc = new SourceMapConsumer(sourceMapData);
 let tsReg = /\.ts/ig;
 
 let original = smc.originalPositionFor({
-  line: 30,
-  column: 9
+  line: 1,
+  column: 112276
 });
 
 console.log('original: ', original);

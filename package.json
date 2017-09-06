@@ -9,6 +9,7 @@
   },
   "scripts": {
     "build": "ionic-app-scripts build",
+    "build-debug": "node --inspect --debug-brk node_modules/.bin/ionic-app-scripts build",
     "clean": "ionic-app-scripts clean",
     "lint": "ionic-app-scripts lint",
     "ionic:build": "npm run build",
@@ -40,5 +41,7 @@
     "ionic": "3.9.2",
     "typescript": "~2.3.4"
   },
-  "config": {}
+  "config": {
+    "ionic_aot_write_to_disk": "true"
+  }
 }
