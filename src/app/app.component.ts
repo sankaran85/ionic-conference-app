@@ -70,24 +70,31 @@ export class ConferenceApp {
   ) {
 
     // Check if the user has already seen the tutorial
-    this.storage.get('hasSeenTutorial')
-      .then((hasSeenTutorial) => {
-        if (hasSeenTutorial) {
-          this.rootPage = TabsPage;
-        } else {
-          this.rootPage = TutorialPage;
-        }
-        this.platformReady()
-      });
+    // this.storage.get('hasSeenTutorial')
+    //   .then((hasSeenTutorial) => {
+    //     if (hasSeenTutorial) {
+    //       this.rootPage = TabsPage;
+    //     } else {
+    //       this.rootPage = TutorialPage;
+    //     }
+    //     this.platformReady()
+    //   });
 
     // load the conference data
-    confData.load();
+    //confData.load();
 
     // decide which menu items should be hidden by current login status stored in local storage
     this.userData.hasLoggedIn().then((hasLoggedIn) => {
-      this.enableMenu(hasLoggedIn === true);
+      if(hasLoggedIn) { 
+        this.rootPage = this.nav.getActive() ?this.nav.getActive().name: 'AccountPage'; // check for current page
+        this.enableMenu(true);
+      } else {
+        this.enableMenu(false);
+        this.rootPage = 'LoginPage';
+      }
+      this.platformReady();
     });
-    this.enableMenu(true);
+    this.enableMenu(false);
 
     this.listenToLoginEvents();
   }
@@ -127,20 +134,24 @@ export class ConferenceApp {
   listenToLoginEvents() {
     this.events.subscribe('user:login', () => {
       this.enableMenu(true);
+      this.nav.setRoot('AccountPage');
+      
     });
 
     this.events.subscribe('user:signup', () => {
-      this.enableMenu(true);
+      this.enableMenu(false);
+      this.nav.setRoot('SignupPage');
     });
 
     this.events.subscribe('user:logout', () => {
       this.enableMenu(false);
+      this.nav.setRoot('LoginPage');
     });
   }
 
   enableMenu(loggedIn: boolean) {
     this.menu.enable(loggedIn, 'loggedInMenu');
-    this.menu.enable(!loggedIn, 'loggedOutMenu');
+    //this.menu.enable(false, 'loggedOutMenu');
   }
 
   platformReady() {
