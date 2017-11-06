@@ -1,15 +1,15 @@
 import { Component } from '@angular/core';
 import { NgForm } from '@angular/forms';
 
-import { NavController } from 'ionic-angular';
+import { NavController, IonicPage } from 'ionic-angular';
 
 import { UserData } from '../../providers/user-data';
 
 import { UserOptions } from '../../interfaces/user-options';
 
-import { TabsPage } from '../tabs-page/tabs-page';
+//import { TabsPage } from '../tabs-page/tabs-page';
 
-
+@IonicPage()
 @Component({
   selector: 'page-user',
   templateUrl: 'signup.html'
@@ -25,7 +25,7 @@ export class SignupPage {
 
     if (form.valid) {
       this.userData.signup(this.signup.username);
-      this.navCtrl.push(TabsPage);
+     // this.navCtrl.push(TabsPage);
     }
   }
 }
